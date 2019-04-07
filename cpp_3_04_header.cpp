@@ -31,9 +31,8 @@ void output(vector <results> students)
     for(unsigned int i=0; i<students.size(); i++)
     {
         cout<<students[i].surname<<setw(22-students[i].surname.size())<<cout.fill(' ')<<right<<
-        students[i].name<<setw(26-students[i].name.size())<<cout.fill(' ')<<right;
-        printf("%.2f",students[i].fpointsa);
-        cout<<setw(18)<<cout.fill(' ')<<left;
-        printf("%.2f\n",students[i].fpointsm);
+        students[i].name<<setw(26-students[i].name.size())<<cout.fill(' ')<<right<<
+        setprecision(2)<<students[i].fpointsa<<setw(18)<<cout.fill(' ')<<left<<
+        setprecision(2)<<students[i].fpointsm<<endl;
     }
 }
