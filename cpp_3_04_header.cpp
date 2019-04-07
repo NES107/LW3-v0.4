@@ -1,4 +1,4 @@
-#include "cpp_3_03_header.h"
+#include "cpp_3_04_header.h"
 
 void random(struct results *results)
 {
@@ -22,27 +22,6 @@ void median(struct results *results)
     if (results->hwm.size()%2!=0) results->fpointsm = 0.4*results->hwm[results->hwm.size()/2]+0.6*results->examm;
     else results->fpointsm = 0.4*((results->hwm[results->hwm.size()/2-1] + results->hwm[results->hwm.size()/2])/2)+0.6*results->examm;
 }
-/*
-void sortname(vector <results> students)
-{
-    results studar[students.size()];
-    copy(students.begin(), students.end(), studar);
-    bool swapped;
-    do
-    {
-        swapped = false;
-        for(int i=0;i<students.size()-1;i++)
-        {
-            if (studar[i].surname>studar[i+1].surname)
-            {
-                swap(studar[i].surname,studar[i+1].surname)
-                swapped = true;
-            }
-        }
-    }while(swapped);
-
-}
-*/
 
 void output(vector <results> students)
 {

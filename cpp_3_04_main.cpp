@@ -1,5 +1,5 @@
-#include "cpp_3_03_header.h"
-#include "cpp_3_03_header.cpp"
+#include "cpp_3_04_header.h"
+#include "cpp_3_04_header.cpp"
 
 
 int main()
@@ -8,7 +8,7 @@ vector <results> students;
 results results;
 
 int path;
-cout<<"1 - manual mark input/random value generation"<<endl<<"2 - file output"<<endl;
+cout<<"1 - manual mark input/random value generation"<<endl<<"2 - file output"<<endl<<"3 - file generation"<<endl;
 cin>>path;
 int path1;
 if(path==1)
@@ -95,6 +95,31 @@ else if(path==2)
         }
     student_list.close();
     }
+else if(path==3)
+{
+    ofstream stud;
+    stud.open("100_students.txt");
+    stud<<endl<<"Surname"<<setw(15)<<cout.fill(' ')<<right<<"Name"<<setw(15)<<cout.fill(' ')<<right<<"Final points (Avg.) / Final points (Med.)"<<endl;
+    for(int i=0; i<82; i++)stud<<"-";
+    stud<<endl;
+    for(int i=1; i<=100; i++)
+    {
+        results.surname = "Surname";
+        results.surname += to_string(i);
+        results.name = "Name";
+        results.name += to_string(i);
+        random(&results);
+        mean(&results);
+        median(&results);
+        results.hwm.resize(0);
+        students.push_back(results);
+        stud<<students[i].surname<<setw(22-students[i].surname.size())<<cout.fill(' ')<<right<<
+        students[i].name<<setw(26-students[i].name.size())<<cout.fill(' ')<<right<<
+        setprecision(2)<<students[i].fpointsa<<setw(18)<<cout.fill(' ')<<left<<
+        setprecision(2)<<students[i].fpointsm<<endl;
+    }
+    stud.close();
+}
 else cout<<endl<<"Error in input. Only 'y' or 'n'!"<<endl;
 
 output(students);

@@ -1,9 +1,9 @@
-#ifndef CPP_3_03_HEADER_H_INCLUDED
-#define CPP_3_03_HEADER_H_INCLUDED
+#ifndef CPP_3_04_HEADER_H_INCLUDED
+#define CPP_3_04_HEADER_H_INCLUDED
 
 #include <iostream>
 #include <vector>
-#include <string>
+#include <string.h>
 #include <numeric>
 #include <iomanip>
 #include <stdio.h>
@@ -26,7 +26,6 @@ struct results
 void random(struct results *results);
 void mean(struct results *results);
 void median(struct results *results);
-//void sortname(vector <results> students);
 void output(vector <results> students);
 
 
