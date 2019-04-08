@@ -36,3 +36,9 @@ void output(vector <results> students)
         setprecision(2)<<students[i].fpointsm<<endl;
     }
 }
+template <typename T>
+    string to_string(const T& value) {
+    stringstream ss;
+    ss << value;
+    return ss.str();
+}
