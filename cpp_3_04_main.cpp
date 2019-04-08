@@ -143,12 +143,14 @@ else if(path==3)    //File Generation
             output(students);
             cout<<endl;
 
-
-
-            for(int i=students.size(); i>0; i--){
-            if(students[i].fpoints<5 && students[i].fpoints>4){
-            int found = i;
-            cout<<studenta[i].surname<<"  "<<students[i].fpointsa;}}    //need to find last not passed
+            for(int i=students.size(); i>0; i--)
+                {
+                    if(students[i].fpointsa<5)
+                        {
+                            int found = i;
+                            cout<<students[found].surname<<"  "<<students[found].fpointsa<<endl;
+                        }
+                }    //need to find first not passed
 
 
             /*
