@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 using namespace std;
 
@@ -28,5 +29,8 @@ void random(struct results *results);
 void mean(struct results *results);
 void median(struct results *results);
 void output(vector <results> students);
+void output1(vector <results> students);
+bool sortname(const results &a, const results &b);
+bool sortfm(const results &a, const results &b);
 
 #endif // CPP_3_03_HEADER_H_INCLUDED

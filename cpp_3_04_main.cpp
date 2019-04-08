@@ -65,6 +65,7 @@ if(path==1)     //Manual input
             {
                 cout<<endl<<"Error in input. Only 'y' or 'n'!"<<endl;
             }
+        sort(students.begin(),students.end(),sortname);
         output(students);
     }
 else if(path==2)    //Reading from a file
@@ -94,7 +95,7 @@ else if(path==2)    //Reading from a file
         students.push_back (results);
         }
     student_list.close();
-    output(students);
+    output1(students);
     }
 else if(path==3)    //File Generation
 {
@@ -138,6 +139,22 @@ else if(path==3)    //File Generation
                 results.hwm.resize(0);
             }
             stud.close();
+            sort(students.begin(),students.end(),sortfm);
+            output(students);
+            cout<<endl;
+
+
+
+            for(int i=students.size(); i>0; i--){
+            if(students[i].fpoints<5 && students[i].fpoints>4){
+            int found = i;
+            cout<<studenta[i].surname<<"  "<<students[i].fpointsa;}}    //need to find last not passed
+
+
+            /*
+            vector <results> notpassed (students.begin(),students.begin()+i);
+            vector <results> passed (students.begin()+i+1,students.end);
+            */
         }
         else if(path3==2)   //1000 students
         {
