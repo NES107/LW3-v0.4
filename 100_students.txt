@@ -1,102 +1,102 @@
-Surname               Name               HW1  HW2  HW3  HW4  HW5  EXAM
-----------------------------------------------------------------------
-Surname1              Name1               2    8    5    1   10     5
-Surname2              Name2               9    9    3    5    6     6
-Surname3              Name3               2    8    2    2    6     3
-Surname4              Name4               8    7    2    5    3     4
-Surname5              Name5               3    3    2    7    9     6
-Surname6              Name6               8    7    2    9   10     3
-Surname7              Name7               8   10    6    5    4     2
-Surname8              Name8               3    4    4    5    2     2
-Surname9              Name9               4    9    8    5    3     8
-Surname10             Name10              8   10    4    2   10     9
-Surname11             Name11              7    6    1    3    9     7
-Surname12             Name12              1    3    5    9    7     6
-Surname13             Name13              1   10    1    1    7     2
-Surname14             Name14              4    9   10    4    5     5
-Surname15             Name15              7    1    7    7    2     9
-Surname16             Name16              5   10    7    4    8     9
-Surname17             Name17              9    3   10    2    4     6
-Surname18             Name18             10    9    5    1    8     7
-Surname19             Name19              4    7    2    6    5     3
-Surname20             Name20              1   10    8    4    8     3
-Surname21             Name21              7    1    2    7    6     8
-Surname22             Name22              6    5    2    3    1     1
-Surname23             Name23              2    5    7    1    8     2
-Surname24             Name24              8    8    8    8    4     4
-Surname25             Name25              6   10   10    9    2     9
-Surname26             Name26              3    7    7    1    4     9
-Surname27             Name27              1    2    3    6    1    10
-Surname28             Name28              5    8    9    4    6     2
-Surname29             Name29              3    1    2    7    5     1
-Surname30             Name30              7    2    9   10    9     5
-Surname31             Name31              2    5    4   10    9     9
-Surname32             Name32              1    9    8    8    9     4
-Surname33             Name33              9    4    8    2    1     8
-Surname34             Name34              4    5   10    7    6     2
-Surname35             Name35              1   10   10    7    9     4
-Surname36             Name36              5    9    5   10   10     3
-Surname37             Name37              6    6    4    4    4     8
-Surname38             Name38              5    4    9    1    9     9
-Surname39             Name39              1    7    9    2   10     9
-Surname40             Name40             10    8    3    3    9     3
-Surname41             Name41              9   10    1    8    9     2
-Surname42             Name42              6    9    7    2    3     5
-Surname43             Name43              3    6    9    7    3     7
-Surname44             Name44              6    4   10    3    5     7
-Surname45             Name45              2    9    3    2    2    10
-Surname46             Name46              8    7    3   10    6     3
-Surname47             Name47              1    1    4   10    2     9
-Surname48             Name48              2   10    6    4    3     6
-Surname49             Name49              3    6    9    7    8     8
-Surname50             Name50              3    3   10    5    2    10
-Surname51             Name51              7   10    9    3    6     6
-Surname52             Name52              5   10    2    3    6     1
-Surname53             Name53              9    4   10    4   10     7
-Surname54             Name54              8   10   10    8    7    10
-Surname55             Name55              4    6    8    7    7     6
-Surname56             Name56              9    3    6    5    5     2
-Surname57             Name57              7    2    7    4    4     6
-Surname58             Name58              6    4    3    9    3     6
-Surname59             Name59              4    7    2    9    7     3
-Surname60             Name60              2    5    7    3   10     2
-Surname61             Name61              6    1    4    7    5    10
-Surname62             Name62              3   10    4    5    5     1
-Surname63             Name63              6   10    7    4    5     3
-Surname64             Name64              9    9    8    6    9     2
-Surname65             Name65              3    6    8    5    5     5
-Surname66             Name66              5    5    3   10    4     1
-Surname67             Name67              8    8    9    8    4     1
-Surname68             Name68              4    9    3    6    3     1
-Surname69             Name69              4    8    3   10    8     6
-Surname70             Name70              4    5    4    3    2     2
-Surname71             Name71              4    3    6    4    6     2
-Surname72             Name72              3    3    3    7    5     1
-Surname73             Name73              8    1    4    5    1     1
-Surname74             Name74              6    4    2    1    7     8
-Surname75             Name75              6    1    1    5    6     5
-Surname76             Name76             10    6    7    5    9     3
-Surname77             Name77              2    7    9    4    2     5
-Surname78             Name78              9    5   10    3    1     8
-Surname79             Name79              1    7    1    8    1     6
-Surname80             Name80              7    8    4    9    5    10
-Surname81             Name81              3    7    6    8    8     5
-Surname82             Name82              6    8   10    9    4     1
-Surname83             Name83              3    3    4    7    8     2
-Surname84             Name84              6    6    5    1    3     7
-Surname85             Name85              1    7    2    2    2     8
-Surname86             Name86              4    1    1    5    9     4
-Surname87             Name87              1    2    3   10    1     4
-Surname88             Name88              9    9    6    8    8     1
-Surname89             Name89              9   10    4    1    8     5
-Surname90             Name90              8    9    4    8    2     1
-Surname91             Name91              1    9    4    5    6     1
-Surname92             Name92              2    5    6    7    3     1
-Surname93             Name93              4    6    7    7    7     8
-Surname94             Name94              7    8    8    2   10     2
-Surname95             Name95              7    3    8    3    8     7
-Surname96             Name96              6    2    4   10   10     6
-Surname97             Name97             10    3    7    6    4     3
-Surname98             Name98              5    5    5    3    8    10
-Surname99             Name99              3    4    8    4    2     6
-Surname100            Name100             8    9    6    9    4     3
+Surname               Name               HW1  HW2  HW3  HW4  HW5  EXAM  Final points(Average / Median)
+---------------------------------------------------------------------------------------------------------
+Surname1              Name1               2    8    5    1   10     5           5.08              5
+Surname2              Name2               9    9    3    5    6     6           6.16            4.8
+Surname3              Name3               2    8    2    2    6     3            3.4            2.6
+Surname4              Name4               8    7    2    5    3     4            4.4            3.2
+Surname5              Name5               3    3    2    7    9     6           5.52            4.4
+Surname6              Name6               8    7    2    9   10     3           4.68            2.6
+Surname7              Name7               8   10    6    5    4     2           3.84            3.6
+Surname8              Name8               3    4    4    5    2     2           2.64            2.8
+Surname9              Name9               4    9    8    5    3     8           7.12              8
+Surname10             Name10              8   10    4    2   10     9           8.12              7
+Surname11             Name11              7    6    1    3    9     7           6.28            4.6
+Surname12             Name12              1    3    5    9    7     6            5.6            5.6
+Surname13             Name13              1   10    1    1    7     2            2.8            1.6
+Surname14             Name14              4    9   10    4    5     5           5.56              7
+Surname15             Name15              7    1    7    7    2     9           7.32            8.2
+Surname16             Name16              5   10    7    4    8     9           8.12            8.2
+Surname17             Name17              9    3   10    2    4     6           5.84            7.6
+Surname18             Name18             10    9    5    1    8     7           6.84            6.2
+Surname19             Name19              4    7    2    6    5     3           3.72            2.6
+Surname20             Name20              1   10    8    4    8     3           4.28              5
+Surname21             Name21              7    1    2    7    6     8           6.64            5.6
+Surname22             Name22              6    5    2    3    1     1           1.96            1.4
+Surname23             Name23              2    5    7    1    8     2           3.04              4
+Surname24             Name24              8    8    8    8    4     4           5.28            5.6
+Surname25             Name25              6   10   10    9    2     9           8.36            9.4
+Surname26             Name26              3    7    7    1    4     9           7.16            8.2
+Surname27             Name27              1    2    3    6    1    10           7.04            7.2
+Surname28             Name28              5    8    9    4    6     2           3.76            4.8
+Surname29             Name29              3    1    2    7    5     1           2.04            1.4
+Surname30             Name30              7    2    9   10    9     5           5.96            6.6
+Surname31             Name31              2    5    4   10    9     9            7.8              7
+Surname32             Name32              1    9    8    8    9     4            5.2            5.6
+Surname33             Name33              9    4    8    2    1     8           6.72              8
+Surname34             Name34              4    5   10    7    6     2           3.76            5.2
+Surname35             Name35              1   10   10    7    9     4           5.36            6.4
+Surname36             Name36              5    9    5   10   10     3           4.92            3.8
+Surname37             Name37              6    6    4    4    4     8           6.72            6.4
+Surname38             Name38              5    4    9    1    9     9           7.64              9
+Surname39             Name39              1    7    9    2   10     9           7.72              9
+Surname40             Name40             10    8    3    3    9     3           4.44              3
+Surname41             Name41              9   10    1    8    9     2           4.16            1.6
+Surname42             Name42              6    9    7    2    3     5           5.16            5.8
+Surname43             Name43              3    6    9    7    3     7           6.44            7.8
+Surname44             Name44              6    4   10    3    5     7           6.44            8.2
+Surname45             Name45              2    9    3    2    2    10           7.44            7.2
+Surname46             Name46              8    7    3   10    6     3           4.52              3
+Surname47             Name47              1    1    4   10    2     9           6.84              7
+Surname48             Name48              2   10    6    4    3     6            5.6              6
+Surname49             Name49              3    6    9    7    8     8           7.44            8.4
+Surname50             Name50              3    3   10    5    2    10           7.84             10
+Surname51             Name51              7   10    9    3    6     6            6.4            7.2
+Surname52             Name52              5   10    2    3    6     1           2.68            1.4
+Surname53             Name53              9    4   10    4   10     7           7.16            8.2
+Surname54             Name54              8   10   10    8    7    10           9.44             10
+Surname55             Name55              4    6    8    7    7     6           6.16            6.8
+Surname56             Name56              9    3    6    5    5     2           3.44            3.6
+Surname57             Name57              7    2    7    4    4     6           5.52            6.4
+Surname58             Name58              6    4    3    9    3     6            5.6            4.8
+Surname59             Name59              4    7    2    9    7     3           4.12            2.6
+Surname60             Name60              2    5    7    3   10     2           3.36              4
+Surname61             Name61              6    1    4    7    5    10           7.84            7.6
+Surname62             Name62              3   10    4    5    5     1           2.76            2.2
+Surname63             Name63              6   10    7    4    5     3           4.36            4.6
+Surname64             Name64              9    9    8    6    9     2           4.48            4.4
+Surname65             Name65              3    6    8    5    5     5           5.16            6.2
+Surname66             Name66              5    5    3   10    4     1           2.76            1.8
+Surname67             Name67              8    8    9    8    4     1           3.56            4.2
+Surname68             Name68              4    9    3    6    3     1            2.6            1.8
+Surname69             Name69              4    8    3   10    8     6           6.24            4.8
+Surname70             Name70              4    5    4    3    2     2           2.64            2.8
+Surname71             Name71              4    3    6    4    6     2           3.04            3.6
+Surname72             Name72              3    3    3    7    5     1           2.28            1.8
+Surname73             Name73              8    1    4    5    1     1           2.12            2.2
+Surname74             Name74              6    4    2    1    7     8            6.4            5.6
+Surname75             Name75              6    1    1    5    6     5           4.52            3.4
+Surname76             Name76             10    6    7    5    9     3           4.76            4.6
+Surname77             Name77              2    7    9    4    2     5           4.92            6.6
+Surname78             Name78              9    5   10    3    1     8           7.04            8.8
+Surname79             Name79              1    7    1    8    1     6           5.04              4
+Surname80             Name80              7    8    4    9    5    10           8.64            7.6
+Surname81             Name81              3    7    6    8    8     5           5.56            5.4
+Surname82             Name82              6    8   10    9    4     1           3.56            4.6
+Surname83             Name83              3    3    4    7    8     2            3.2            2.8
+Surname84             Name84              6    6    5    1    3     7           5.88            6.2
+Surname85             Name85              1    7    2    2    2     8           5.92            5.6
+Surname86             Name86              4    1    1    5    9     4              4            2.8
+Surname87             Name87              1    2    3   10    1     4           3.76            3.6
+Surname88             Name88              9    9    6    8    8     1            3.8              3
+Surname89             Name89              9   10    4    1    8     5           5.56            4.6
+Surname90             Name90              8    9    4    8    2     1           3.08            2.2
+Surname91             Name91              1    9    4    5    6     1            2.6            2.2
+Surname92             Name92              2    5    6    7    3     1           2.44              3
+Surname93             Name93              4    6    7    7    7     8           7.28            7.6
+Surname94             Name94              7    8    8    2   10     2              4            4.4
+Surname95             Name95              7    3    8    3    8     7           6.52            7.4
+Surname96             Name96              6    2    4   10   10     6           6.16            5.2
+Surname97             Name97             10    3    7    6    4     3            4.2            4.6
+Surname98             Name98              5    5    5    3    8    10           8.08              8
+Surname99             Name99              3    4    8    4    2     6           5.28            6.8
+Surname100            Name100             8    9    6    9    4     3           4.68            4.2

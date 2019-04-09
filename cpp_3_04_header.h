@@ -11,6 +11,7 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <stdexcept>
 
 using namespace std;
 
@@ -25,12 +26,15 @@ struct results
     float fpointsm;
 };
 
-void random(struct results *results);
-void mean(struct results *results);
-void median(struct results *results);
+void mmanualinput(struct results &resultss);
+void random(struct results *resultss);
+void mean(struct results *resultss);
+void median(struct results *resultss);
 void output(vector <results> students);
 void output1(vector <results> students);
 bool sortname(const results &a, const results &b);
 bool sortfm(const results &a, const results &b);
+void filegen(string fname, vector <results> &students,struct results resultss,int number);
+int firstntp(vector <results> &students);
 
 #endif // CPP_3_03_HEADER_H_INCLUDED

@@ -5,7 +5,7 @@
 int main()
 {
 vector <results> students;
-results results;
+results resultss;
 
 int path;
 cout<<"1 - manual mark input/random value generation"<<endl<<"2 - file output"<<endl<<"3 - file generation"<<endl<<"-> ";
@@ -22,41 +22,21 @@ if(path==1)     //Manual input
             while(choice1!='n')
                 {
                     cout<<"Enter surname: ";
-                    cin>>results.surname;
+                    cin>>resultss.surname;
                     cout<<"Enter name: ";
-                    cin>>results.name;
+                    cin>>resultss.name;
                     if(path1==1)
                     {
-                        try
-                        {
-                            char choice2 ='y';
-                            while(choice2!='n')
-                            {
-                                float hw;
-                                cout<<"Enter HW mark "<<results.hwm.size()+1<<": ";
-                                cin>>hw;
-                                results.hwm.push_back (hw);
-                                cout<<"Add mark (y/n)?: ";
-                                cin>>choice2;
-                                if(choice2 !='y' && choice2 !='n')throw 0;
-                            }
+                        mmanualinput(resultss);
+                    }
 
-                        }catch(int x)
-                            {
-                                cout<<endl<<"Error in input. Only 'y' or 'n'!"<<endl;
-                            }
-                            cout<<"Enter EXAM mark: ";
-                            cin>>results.examm;
-                            cout<<endl;
-                        }
-
-                    else if(path1==2)random(&results);                      //random mark generation
+                    else if(path1==2)random(&resultss);                      //random mark generation
                     else cout<<"Error in input. Only '1' or '2'!"<<endl;
 
-                    mean(&results);
-                    median(&results);
-                    results.hwm.resize(0);
-                    students.push_back (results);
+                    mean(&resultss);
+                    median(&resultss);
+                    resultss.hwm.resize(0);
+                    students.push_back (resultss);
                     cout<<"Add student "<<students.size()+1<<"(y/n)?: ";
                     cin>>choice1;
                     if(choice1 !='y' && choice1 !='n')throw 0;
@@ -80,198 +60,97 @@ else if(path==2)    //Reading from a file
         student_list.ignore( 1000, '\n' );
         while(!student_list.eof())
         {
-            student_list>>results.surname;
-            student_list>>results.name;
+            student_list>>resultss.surname;
+            student_list>>resultss.name;
             for(int i=0; i<5; i++)
             {
                 float mark;
                 student_list>>mark;
-                results.hwm.push_back(mark);
+                resultss.hwm.push_back(mark);
             }
-        student_list>>results.examm;
-        mean(&results);
-        median(&results);
-        results.hwm.resize(0);
-        students.push_back (results);
+        student_list>>resultss.examm;
+        mean(&resultss);
+        median(&resultss);
+        resultss.hwm.resize(0);
+        students.push_back (resultss);
         }
     student_list.close();
     output1(students);
     }
 else if(path==3)    //File Generation
 {
-    try
+    int path3;
+    do
     {
-        int path3;
-        cout<<"1 - 100 students"<<endl<<"2 - 1000 students"<<endl<<"3 - 10000 students"<<endl<<"4 - 100000 students"<<endl<<"-> ";
-        cin>>path3;
-        if(path3==1)    //100 students
+        try
         {
-            ofstream stud;
-            stud.open("100_students.txt");
-            stud<<"Surname"<<setw(15)<<cout.fill(' ')<<right<<"Name"<<setw(15)<<cout.fill(' ')<<left
-            <<"HW1"<<setw(2)<<cout.fill(' ')<<left<<"HW2"<<setw(2)<<cout.fill(' ')<<left
-            <<"HW3"<<setw(2)<<cout.fill(' ')<<left<<"HW4"<<setw(2)<<cout.fill(' ')<<left
-            <<"HW5"<<setw(2)<<cout.fill(' ')<<left<<"EXAM"<<endl;
-            for(int i=0; i<70; i++)stud<<"-";
-            stud<<endl;
-            for(int i=1; i<=100; i++)
+            string fname;
+            cout<<"1 - 100 students"<<endl<<"2 - 1000 students"<<endl<<"3 - 10000 students"<<endl<<"4 - 100000 students"<<endl<<"-> ";
+            cin>>path3;
+            if(path3==1)    //100 students
             {
-                results.surname = "Surname";
-                results.surname +=to_string(i);
-                results.name = "Name";
-                results.name +=to_string(i);
-                random(&results);
-                mean(&results);
-                median(&results);
-                students.push_back(results);
-                stud<<students[i-1].surname
-                <<setw(22-students[i-1].surname.size())<<cout.fill(' ')<<left<<students[i-1].name
-                <<setw(16-students[i-1].name.size())<<cout.fill(' ')<<right;
-                for(int p=0;p<5;p++)
-                {
-                    stringstream ss;
-                    ss<<students[i-1].hwm[p];
-                    stud<<setw(5-ss.str().size())<<cout.fill(' ')<<left<<students[i-1].hwm[p];
-                }
-                stringstream ss;
-                ss<<students[i-1].examm;
-                stud<<setw(6-ss.str().size())<<cout.fill(' ')<<left<<students[i-1].examm<<endl;
-                results.hwm.resize(0);
-            }
-            stud.close();
-            sort(students.begin(),students.end(),sortfm);
-            output(students);
-            cout<<endl;
-
-            for(int i=students.size(); i>0; i--)
-                {
-                    if(students[i].fpointsa<5)
-                        {
-                            int found = i;
-                            cout<<students[found].surname<<"  "<<students[found].fpointsa<<endl;
-                        }
-                }    //need to find first not passed
+                fname = "100_students.txt";
+                filegen(fname,students,resultss,100);
+                int i = firstntp(students);
+                vector <results> passed (students.begin(),students.begin()+i);
+                vector <results> notpassed (students.begin()+i+1,students.end());
+                students.resize(0);
+                fname = "100_students_passed.txt";
+                filegen(fname,passed,resultss,passed.size());
+                fname = "100_students_notpassed.txt";
+                filegen(fname,notpassed,resultss,notpassed.size());
 
 
-            /*
-            vector <results> notpassed (students.begin(),students.begin()+i);
-            vector <results> passed (students.begin()+i+1,students.end);
-            */
-        }
-        else if(path3==2)   //1000 students
-        {
-            ofstream stud;
-            stud.open("1000_students.txt");
-            stud<<"Surname"<<setw(15)<<cout.fill(' ')<<right<<"Name"<<setw(15)<<cout.fill(' ')<<left
-            <<"HW1"<<setw(2)<<cout.fill(' ')<<left<<"HW2"<<setw(2)<<cout.fill(' ')<<left
-            <<"HW3"<<setw(2)<<cout.fill(' ')<<left<<"HW4"<<setw(2)<<cout.fill(' ')<<left
-            <<"HW5"<<setw(2)<<cout.fill(' ')<<left<<"EXAM"<<endl;
-            for(int i=0; i<70; i++)stud<<"-";
-            stud<<endl;
-            for(int i=1; i<=1000; i++)
-            {
-                results.surname = "Surname";
-                results.surname +=to_string(i);
-                results.name = "Name";
-                results.name +=to_string(i);
-                random(&results);
-                mean(&results);
-                median(&results);
-                students.push_back(results);
-                stud<<students[i-1].surname
-                <<setw(22-students[i-1].surname.size())<<cout.fill(' ')<<left<<students[i-1].name
-                <<setw(16-students[i-1].name.size())<<cout.fill(' ')<<right;
-                for(int p=0;p<5;p++)
-                {
-                    stringstream ss;
-                    ss<<students[i-1].hwm[p];
-                    stud<<setw(5-ss.str().size())<<cout.fill(' ')<<left<<students[i-1].hwm[p];
-                }
-                stringstream ss;
-                ss<<students[i-1].examm;
-                stud<<setw(6-ss.str().size())<<cout.fill(' ')<<left<<students[i-1].examm<<endl;
-                results.hwm.resize(0);
             }
-            stud.close();
-        }
-        if(path3==3)    //10000 students
-        {
-            ofstream stud;
-            stud.open("10000_students.txt");
-            stud<<"Surname"<<setw(15)<<cout.fill(' ')<<right<<"Name"<<setw(15)<<cout.fill(' ')<<left
-            <<"HW1"<<setw(2)<<cout.fill(' ')<<left<<"HW2"<<setw(2)<<cout.fill(' ')<<left
-            <<"HW3"<<setw(2)<<cout.fill(' ')<<left<<"HW4"<<setw(2)<<cout.fill(' ')<<left
-            <<"HW5"<<setw(2)<<cout.fill(' ')<<left<<"EXAM"<<endl;
-            for(int i=0; i<70; i++)stud<<"-";
-            stud<<endl;
-            for(int i=1; i<=10000; i++)
+            else if(path3==2)   //1000 students
             {
-                results.surname = "Surname";
-                results.surname +=to_string(i);
-                results.name = "Name";
-                results.name +=to_string(i);
-                random(&results);
-                mean(&results);
-                median(&results);
-                students.push_back(results);
-                stud<<students[i-1].surname
-                <<setw(22-students[i-1].surname.size())<<cout.fill(' ')<<left<<students[i-1].name
-                <<setw(16-students[i-1].name.size())<<cout.fill(' ')<<right;
-                for(int p=0;p<5;p++)
-                {
-                    stringstream ss;
-                    ss<<students[i-1].hwm[p];
-                    stud<<setw(5-ss.str().size())<<cout.fill(' ')<<left<<students[i-1].hwm[p];
-                }
-                stringstream ss;
-                ss<<students[i-1].examm;
-                stud<<setw(6-ss.str().size())<<cout.fill(' ')<<left<<students[i-1].examm<<endl;
-                results.hwm.resize(0);
+                fname = "1000_students.txt";
+                filegen(fname,students,resultss,1000);
+                int i = firstntp(students);
+                vector <results> passed (students.begin(),students.begin()+i);
+                vector <results> notpassed (students.begin()+i+1,students.end());
+                students.resize(0);
+                fname = "1000_students_passed.txt";
+                filegen(fname,passed,resultss,passed.size());
+                fname = "1000_students_notpassed.txt";
+                filegen(fname,notpassed,resultss,notpassed.size());
             }
-            stud.close();
-        }
-        if(path3==4)    //100000 students
-        {
-            ofstream stud;
-            stud.open("100000_students.txt");
-            stud<<"Surname"<<setw(15)<<cout.fill(' ')<<right<<"Name"<<setw(15)<<cout.fill(' ')<<left
-            <<"HW1"<<setw(2)<<cout.fill(' ')<<left<<"HW2"<<setw(2)<<cout.fill(' ')<<left
-            <<"HW3"<<setw(2)<<cout.fill(' ')<<left<<"HW4"<<setw(2)<<cout.fill(' ')<<left
-            <<"HW5"<<setw(2)<<cout.fill(' ')<<left<<"EXAM"<<endl;
-            for(int i=0; i<70; i++)stud<<"-";
-            stud<<endl;
-            for(int i=1; i<=100000; i++)
+            if(path3==3)    //10000 students
             {
-                results.surname = "Surname";
-                results.surname +=to_string(i);
-                results.name = "Name";
-                results.name +=to_string(i);
-                random(&results);
-                mean(&results);
-                median(&results);
-                students.push_back(results);
-                stud<<students[i-1].surname
-                <<setw(22-students[i-1].surname.size())<<cout.fill(' ')<<left<<students[i-1].name
-                <<setw(16-students[i-1].name.size())<<cout.fill(' ')<<right;
-                for(int p=0;p<5;p++)
-                {
-                    stringstream ss;
-                    ss<<students[i-1].hwm[p];
-                    stud<<setw(5-ss.str().size())<<cout.fill(' ')<<left<<students[i-1].hwm[p];
-                }
-                stringstream ss;
-                ss<<students[i-1].examm;
-                stud<<setw(6-ss.str().size())<<cout.fill(' ')<<left<<students[i-1].examm<<endl;
-                results.hwm.resize(0);
-
+                fname = "10000_students.txt";
+                filegen(fname,students,resultss,10000);
+                int i = firstntp(students);
+                vector <results> passed (students.begin(),students.begin()+i);
+                vector <results> notpassed (students.begin()+i+1,students.end());
+                students.resize(0);
+                fname = "10000_students_passed.txt";
+                filegen(fname,passed,resultss,passed.size());
+                fname = "10000_students_notpassed.txt";
+                filegen(fname,notpassed,resultss,notpassed.size());
             }
-            stud.close();
-        }
-        else if(path3 !=1 && path3 !=2 && path3 !=3 && path3 !=4) throw 1;
-    }catch(int x)
-        {
-            cout<<"Error in input!(1,2,3,4)"<<endl;
-        }
+            if(path3==4)    //100000 students
+            {
+                fname = "100000_students.txt";
+                filegen(fname,students,resultss,100000);
+                int i = firstntp(students);
+                vector <results> passed (students.begin(),students.begin()+i);
+                vector <results> notpassed (students.begin()+i+1,students.end());
+                students.resize(0);
+                fname = "100000_students_passed.txt";
+                filegen(fname,passed,resultss,passed.size());
+                fname = "100000_students_notpassed.txt";
+                filegen(fname,notpassed,resultss,notpassed.size());
+            }
+            else if(path3 !=1 && path3 !=2 && path3 !=3 && path3 !=4) throw runtime_error("Error in input!(1,2,3,4)");
+        }catch(const runtime_error &e)
+            {
+                cout<<e.what();
+                cin.clear();
+                cin.ignore(256,'\n');
+                cout<<"Enter one more time"<<endl<<"-> ";
+                cin>>path3;
+            }
+    }while(cin.fail()==true);
 }
 else cout<<endl<<"Error in input. Only 'y' or 'n'!"<<endl;
 return 0;
