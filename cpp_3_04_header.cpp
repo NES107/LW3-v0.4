@@ -118,6 +118,35 @@ bool sortname(const results &a, const results &b)
 {
     return a.surname < b.surname;
 }
+void readff(vector <results> &students, struct results &resultss)
+{
+    ifstream student_list;
+        student_list.open("student_list.txt");
+        if(!student_list.is_open())
+        {
+            cerr<<"Error Opening File"<<endl;
+            exit(EXIT_FAILURE);
+        }
+        student_list.ignore( 1000, '\n' );
+        while(!student_list.eof())
+        {
+            student_list>>resultss.surname;
+            student_list>>resultss.name;
+            for(int i=0; i<5; i++)
+            {
+                float mark;
+                student_list>>mark;
+                resultss.hwm.push_back(mark);
+            }
+        student_list>>resultss.examm;
+        mean(&resultss);
+        median(&resultss);
+        resultss.hwm.resize(0);
+        students.push_back (resultss);
+        }
+    student_list.close();
+    output1(students);
+}
 bool sortfm(const results &a, const results &b)
 {
     return a.fpointsa > b.fpointsa;
@@ -178,6 +207,17 @@ int firstntp(vector <results> &students)
         }
     }
     return found;
+}
+void vsplitting(vector <results> &students, struct results &resultss, string &fname1, string &fname2, string &fname3, int &number)
+{
+
+    filegen(fname1,students,resultss,number);
+    int i = firstntp(students);
+    vector <results> passed (students.begin(),students.begin()+i);
+    vector <results> notpassed (students.begin()+i+1,students.end());
+    students.resize(0);
+    filegen(fname2,passed,resultss,passed.size());
+    filegen(fname3,notpassed,resultss,notpassed.size());
 }
 
 

@@ -33,8 +33,10 @@ void median(struct results *resultss);
 void output(vector <results> students);
 void output1(vector <results> students);
 bool sortname(const results &a, const results &b);
+void readff(vector <results> &students, struct results &resultss);
 bool sortfm(const results &a, const results &b);
 void filegen(string fname, vector <results> &students,struct results resultss,int number);
 int firstntp(vector <results> &students);
+void vsplitting(vector <results> &students,  struct results &resultss, string &fname1, string &fname2, string &fname3, int &number);
 
 #endif // CPP_3_03_HEADER_H_INCLUDED
