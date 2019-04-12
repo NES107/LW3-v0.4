@@ -2,61 +2,58 @@
 
 
 void mmanualinput(struct results &resultss)
-{   do
+{   char choice2 ='y';
+    while(choice2!='n')
     {
-        char choice2 ='y';
-        try
+        float hw;
+        cout<<"Enter HW mark "<<resultss.hwm.size()+1<<": ";
+        cin>>hw;
+        while(hw<=0 || hw>10)
         {
-            while(choice2!='n')
+            try
             {
-                do
-                {
-                    float hw;
-                    try
-                    {
-                        cout<<"Enter HW mark "<<resultss.hwm.size()+1<<": ";
-                        cin>>hw;
-                        if(hw<=0 || hw>10)throw runtime_error("Error in input!hw[1,10]\n");
-                        resultss.hwm.push_back (hw);
-                    }catch(const runtime_error &e)
-                        {
-                            cout<<e.what();
-                            cin.clear();
-                            cin.ignore(256,'\n');
-                            cout<<"Enter one more time"<<endl<<"-> ";
-                            cin>>hw;
-                        }
-                }while(cin.fail()==true);
+                throw runtime_error("Error in input!hw[1,10]\n");
+            }catch(const runtime_error &e)
+            {
+                cout<<e.what();
+                cin.ignore(256,'\n');
+                cout<<"Enter one more time:"<<endl<<"-> ";
+                cin>>hw;
+            }
+        }
+        resultss.hwm.push_back (hw);
 
-                cout<<"Add mark (y/n)?: ";
-                cin>>choice2;
-                if(choice2 !='y' && choice2 !='n')throw runtime_error("Error in input!(y/n)\n");
-            }
-        }catch(const runtime_error &e)
+        cout<<"Add mark (y/n)?: ";
+        cin>>choice2;
+        while(choice2 !='y' && choice2 !='n')
+        {
+            try
+            {
+                throw runtime_error("Error in input!(y/n)\n");
+            }catch(const runtime_error &e)
             {
                 cout<<e.what();
-                cin.clear();
                 cin.ignore(256,'\n');
-                cout<<"Enter one more time"<<endl<<"-> ";
+                cout<<"Enter one more time:"<<endl<<"-> ";
                 cin>>choice2;
             }
-    }while(cin.fail()==true);
-    do
+        }
+    }
+    cout<<"Enter EXAM mark: ";
+    cin>>resultss.examm;
+    while(resultss.examm<=0 || resultss.examm>10)
     {
         try
         {
-            cout<<"Enter EXAM mark: ";
-            cin>>resultss.examm;
-            if(resultss.examm<=0 || resultss.examm>10)throw runtime_error("Error in input! Exam[1,10]\n");
+            throw runtime_error("Error in input! Exam[1,10]\n");
         }catch(const runtime_error &e)
-            {
-                cout<<e.what();
-                cin.clear();
-                cin.ignore(256,'\n');
-                cout<<"Enter one more time"<<endl<<"-> ";
-                cin>>resultss.examm;
-            }
-    }while(cin.fail()==true);
+        {
+            cout<<e.what();
+            cin.ignore(256,'\n');
+            cout<<"Enter one more time:"<<endl<<"-> ";
+            cin>>resultss.examm;
+        }
+    }
 }
 void random(struct results *resultss)
 {
@@ -121,29 +118,29 @@ bool sortname(const results &a, const results &b)
 void readff(vector <results> &students, struct results &resultss)
 {
     ifstream student_list;
-        student_list.open("student_list.txt");
-        if(!student_list.is_open())
+    student_list.open("student_list.txt");
+    if(!student_list.is_open())
+    {
+        cerr<<"Error Opening File"<<endl;
+        exit(EXIT_FAILURE);
+    }
+    student_list.ignore( 1000, '\n' );
+    while(!student_list.eof())
+    {
+        student_list>>resultss.surname;
+        student_list>>resultss.name;
+        for(int i=0; i<5; i++)
         {
-            cerr<<"Error Opening File"<<endl;
-            exit(EXIT_FAILURE);
+            float mark;
+            student_list>>mark;
+            resultss.hwm.push_back(mark);
         }
-        student_list.ignore( 1000, '\n' );
-        while(!student_list.eof())
-        {
-            student_list>>resultss.surname;
-            student_list>>resultss.name;
-            for(int i=0; i<5; i++)
-            {
-                float mark;
-                student_list>>mark;
-                resultss.hwm.push_back(mark);
-            }
         student_list>>resultss.examm;
         mean(&resultss);
         median(&resultss);
         resultss.hwm.resize(0);
         students.push_back (resultss);
-        }
+    }
     student_list.close();
     output1(students);
 }
@@ -155,46 +152,46 @@ bool sortfm(const results &a, const results &b)
 void filegen(string fname,vector <results> &students,struct results resultss,int number)
 {
     ofstream stud;
-            stud.open(fname);
-            stud<<"Surname"<<setw(15)<<cout.fill(' ')<<right<<"Name"<<setw(15)<<cout.fill(' ')<<left
-            <<"HW1"<<setw(2)<<cout.fill(' ')<<left<<"HW2"<<setw(2)<<cout.fill(' ')<<left
-            <<"HW3"<<setw(2)<<cout.fill(' ')<<left<<"HW4"<<setw(2)<<cout.fill(' ')<<left
-            <<"HW5"<<setw(2)<<cout.fill(' ')<<left<<"EXAM"<<setw(2)<<cout.fill(' ')<<left
-            <<"Final points(Average / Median)"<<endl;
-            for(int i=0; i<105; i++)stud<<"-";
-            stud<<endl;
-            for(int i=1; i<=number; i++)
-            {
-                resultss.surname = "Surname";
-                resultss.surname +=to_string(i);
-                resultss.name = "Name";
-                resultss.name +=to_string(i);
-                random(&resultss);
-                mean(&resultss);
-                median(&resultss);
-                students.push_back(resultss);
-                stud<<students[i-1].surname
-                <<setw(22-students[i-1].surname.size())<<cout.fill(' ')<<left<<students[i-1].name
-                <<setw(16-students[i-1].name.size())<<cout.fill(' ')<<right;
-                for(int p=0;p<5;p++)
-                {
-                    stringstream ss;
-                    ss<<students[i-1].hwm[p];
-                    stud<<setw(5-ss.str().size())<<cout.fill(' ')<<left<<students[i-1].hwm[p];
-                }
-                stringstream ss;
-                ss<<students[i-1].examm;
-                stud<<setw(6-ss.str().size())<<cout.fill(' ')<<left<<students[i-1].examm;
-                stringstream ss1;
-                ss1<<students[i-1].fpointsa;
-                stud<<setw(15-ss1.str().size())<<cout.fill(' ')<<left<<setprecision(3)<<students[i-1].fpointsa;
-                stringstream ss2;
-                ss2<<students[i-1].fpointsm;
-                stud<<setw(15-ss2.str().size())<<cout.fill(' ')<<left<<setprecision(3)<<students[i-1].fpointsm<<endl;
-                resultss.hwm.resize(0);
-            }
-            stud.close();
-            sort(students.begin(),students.end(),sortfm);
+    stud.open(fname);
+    stud<<"Surname"<<setw(15)<<cout.fill(' ')<<right<<"Name"<<setw(15)<<cout.fill(' ')<<left
+    <<"HW1"<<setw(2)<<cout.fill(' ')<<left<<"HW2"<<setw(2)<<cout.fill(' ')<<left
+    <<"HW3"<<setw(2)<<cout.fill(' ')<<left<<"HW4"<<setw(2)<<cout.fill(' ')<<left
+    <<"HW5"<<setw(2)<<cout.fill(' ')<<left<<"EXAM"<<setw(2)<<cout.fill(' ')<<left
+    <<"Final points(Average / Median)"<<endl;
+    for(int i=0; i<105; i++)stud<<"-";
+    stud<<endl;
+    for(int i=1; i<=number; i++)
+    {
+        resultss.surname = "Surname";
+        resultss.surname +=to_string(i);
+        resultss.name = "Name";
+        resultss.name +=to_string(i);
+        random(&resultss);
+        mean(&resultss);
+        median(&resultss);
+        students.push_back(resultss);
+        stud<<students[i-1].surname
+        <<setw(22-students[i-1].surname.size())<<cout.fill(' ')<<left<<students[i-1].name
+        <<setw(16-students[i-1].name.size())<<cout.fill(' ')<<right;
+        for(int p=0;p<5;p++)
+        {
+            stringstream ss;
+            ss<<students[i-1].hwm[p];
+            stud<<setw(5-ss.str().size())<<cout.fill(' ')<<left<<students[i-1].hwm[p];
+        }
+        stringstream ss;
+        ss<<students[i-1].examm;
+        stud<<setw(6-ss.str().size())<<cout.fill(' ')<<left<<students[i-1].examm;
+        stringstream ss1;
+        ss1<<students[i-1].fpointsa;
+        stud<<setw(15-ss1.str().size())<<cout.fill(' ')<<left<<setprecision(3)<<students[i-1].fpointsa;
+        stringstream ss2;
+        ss2<<students[i-1].fpointsm;
+        stud<<setw(15-ss2.str().size())<<cout.fill(' ')<<left<<setprecision(3)<<students[i-1].fpointsm<<endl;
+        resultss.hwm.resize(0);
+    }
+    stud.close();
+    sort(students.begin(),students.end(),sortfm);
 }
 int firstntp(vector <results> &students)
 {
@@ -210,7 +207,6 @@ int firstntp(vector <results> &students)
 }
 void vsplitting(vector <results> &students, struct results &resultss, string &fname1, string &fname2, string &fname3, int &number)
 {
-
     filegen(fname1,students,resultss,number);
     int i = firstntp(students);
     vector <results> passed (students.begin(),students.begin()+i);
