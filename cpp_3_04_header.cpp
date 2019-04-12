@@ -151,6 +151,7 @@ bool sortfm(const results &a, const results &b)
 
 void filegen(string fname,vector <results> &students,struct results resultss,int number)
 {
+    auto start = std::chrono::steady_clock::now();
     ofstream stud;
     stud.open(fname);
     stud<<"Surname"<<setw(15)<<cout.fill(' ')<<right<<"Name"<<setw(15)<<cout.fill(' ')<<left
@@ -191,7 +192,6 @@ void filegen(string fname,vector <results> &students,struct results resultss,int
         resultss.hwm.resize(0);
     }
     stud.close();
-    sort(students.begin(),students.end(),sortfm);
 }
 int firstntp(vector <results> &students)
 {
@@ -207,13 +207,29 @@ int firstntp(vector <results> &students)
 }
 void vsplitting(vector <results> &students, struct results &resultss, string &fname1, string &fname2, string &fname3, int &number)
 {
+    auto start = std::chrono::steady_clock::now();
     filegen(fname1,students,resultss,number);
+    auto start1 = std::chrono::steady_clock::now();
+    sort(students.begin(),students.end(),sortfm);
+    auto start2 = std::chrono::steady_clock::now();
     int i = firstntp(students);
     vector <results> passed (students.begin(),students.begin()+i);
     vector <results> notpassed (students.begin()+i+1,students.end());
     students.resize(0);
+    auto start3 = std::chrono::steady_clock::now();
     filegen(fname2,passed,resultss,passed.size());
+    sort(students.begin(),students.end(),sortfm);
     filegen(fname3,notpassed,resultss,notpassed.size());
+    sort(students.begin(),students.end(),sortfm);
+    auto start4 = std::chrono::steady_clock::now();
+    double elapsed_time_fc = double(std::chrono::duration_cast <std::chrono::nanoseconds> (start1-start).count());
+    double elapsed_time_ds = double(std::chrono::duration_cast <std::chrono::nanoseconds> (start2-start1).count());
+    double elapsed_time_ds2 = double(std::chrono::duration_cast <std::chrono::nanoseconds> (start3-start2).count());
+    double elapsed_time_ods2 = double(std::chrono::duration_cast <std::chrono::nanoseconds> (start4-start3).count());
+    cout<<"Speed of file creation: "<<(sizeof(results)*students.size())/(elapsed_time_fc/1e9)<<endl
+    <<"Speed of data sorting: "<<(sizeof(results)* students.size())/(elapsed_time_ds/1e9)<<endl;
+    cout<<"Speed of data splitting in 2 parts: "<<(sizeof(results)* students.size())/(elapsed_time_ds2/1e9)<<endl
+    <<"Speed of output of sorted students into 2 files: "<<(sizeof(results)* students.size())/(elapsed_time_ods2/1e9)<<endl;
 }
 
 
