@@ -215,7 +215,6 @@ void vsplitting(vector <results> &students, struct results &resultss, string &fn
     int i = firstntp(students);
     vector <results> passed (students.begin(),students.begin()+i);
     vector <results> notpassed (students.begin()+i+1,students.end());
-    students.resize(0);
     auto start3 = std::chrono::steady_clock::now();
     filegen(fname2,passed,resultss,passed.size());
     sort(students.begin(),students.end(),sortfm);
@@ -226,10 +225,11 @@ void vsplitting(vector <results> &students, struct results &resultss, string &fn
     double elapsed_time_ds = double(std::chrono::duration_cast <std::chrono::nanoseconds> (start2-start1).count());
     double elapsed_time_ds2 = double(std::chrono::duration_cast <std::chrono::nanoseconds> (start3-start2).count());
     double elapsed_time_ods2 = double(std::chrono::duration_cast <std::chrono::nanoseconds> (start4-start3).count());
-    cout<<"Speed of file creation: "<<(sizeof(results)*students.size())/(elapsed_time_fc/1e9)<<endl
-    <<"Speed of data sorting: "<<(sizeof(results)* students.size())/(elapsed_time_ds/1e9)<<endl;
-    cout<<"Speed of data splitting in 2 parts: "<<(sizeof(results)* students.size())/(elapsed_time_ds2/1e9)<<endl
-    <<"Speed of output of sorted students into 2 files: "<<(sizeof(results)* students.size())/(elapsed_time_ods2/1e9)<<endl;
+    cout<<"Speed of file creation(MBps): "<<((sizeof(results)*students.size())/(elapsed_time_fc/1e9)/1e6)<<endl
+    <<"Speed of data sorting(MBps): "<<((sizeof(results)* students.size())/(elapsed_time_ds/1e9)/1e6)<<endl;
+    cout<<"Speed of data splitting in 2 parts(MBps): "<<((sizeof(results)* students.size())/(elapsed_time_ds2/1e9)/1e6)<<endl
+    <<"Speed of output of sorted students into 2 files(MBps): "<<((sizeof(results)* students.size())/(elapsed_time_ods2/1e9)/1e6)<<endl;
+    students.resize(0);
 }
 
 
