@@ -1,5 +1,6 @@
 LW3_v0.4
 
+New features:
 1) Program is able to generate 100, 1000, 10000, 100000 number of student lists stored in separate files 
 2) Students are sorted in terms of passing and failing the course (2 more files are generated)
 3) Ability to track code speed at different segments
@@ -9,6 +10,7 @@ LW3_v0.4
 
 # LW3-v0.3
 
+New features:
 1) Converting a part of the code into separate functions (improvement expected later on)
 2) The program was divided into separate files (new header and cpp files were created)
 3) Preliminar exception handling methods were introduced (looking forward further improvement)
