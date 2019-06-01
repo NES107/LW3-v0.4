@@ -1,4 +1,4 @@
-LW3_v0.4
+# LW3_v0.4
 
 New features:
 1) Program is able to generate 100, 1000, 10000, 100000 number of student lists stored in separate files 
